@@ -1,0 +1,98 @@
+---
+title: "Untitled"
+author: "Yasemin Hızarcı"
+date: "06 01 2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+# **1.AŞAMA**
+
+```{r message=FALSE, warning=FALSE}
+
+# Load the Libraries
+
+library(dplyr)
+library(readr)
+library(lubridate)
+library(ggplot2)
+library(patchwork)
+library(geosphere)
+
+```
+```{r}
+# Read in the depth data
+
+bottom<-read_csv("C:/Users/yasem/OneDrive/Masaüstü/proje/bottom_line.csv", 
+                 col_types = cols(Ping_date=col_datetime(format="%m/%d/%Y")))%>%
+  rename_all(tolower)
+
+glimpse(bottom)
+```
+
+# **2.AŞAMA**
+
+```{r}
+# Clean the bottom data
+
+bottom_clean<-bottom %>%
+filter(position_status==1)%>%
+select(ping_date,ping_time,latitude,longitude,depth)%>%
+mutate(date_time=ping_date + ping_time,
+         distance_between=c(0,
+                            geosphere::distHaversine(cbind(longitude[-n()],latitude[-n()]),
+                                                     cbind(longitude[ -1],latitude[ -1]))),
+         distance_along=cumsum(distance_between))
+
+# Inspect the data
+
+glimpse(bottom_clean)
+```
+
+# **3. AŞAMA**
+
+```{r}
+# Set the size of the plots
+
+options(repr.plot.width=7, repr.plot.height=5)
+
+# Plot the ship's track
+
+p_ship_track <-ggplot(bottom_clean, aes(longitude,latitude))+
+  geom_point(size=0.5)+
+  labs(x="Longitude",y="Latitude")
+
+# Plot the depth of the sea floor along the ship's track
+
+p_bathymetry<-ggplot(bottom_clean,aes(distance_along,depth))+
+  geom_point(size=0.5)+
+  scale_y_reverse()+
+  labs(x="Distance along trackline (m)",y="Depth (m)")
+
+# Arrange the plots side by side
+
+p_ship_track+p_bathymetry
+```
+
+# **4.AŞAMA**
+
+
+
+```{r}
+
+# Read in the acoustic data
+
+acoustic<-read_csv("C:/Users/yasem/OneDrive/Masaüstü/proje/acoustic.csv",
+                   col_types=cols(Date_M=col_datetime(format="%Y%m%d")))%>%
+  filter(Lon_M !=999.0)
+
+# Glimpse the data
+glimpse(acoustic)
+
+```
+
+

@@ -15,13 +15,15 @@ knitr::opts_chunk$set(echo = TRUE)
 ```{r message=FALSE, warning=FALSE}
 
 # Load the Libraries
-
+library(tidyverse)
 library(dplyr)
 library(readr)
 library(lubridate)
 library(ggplot2)
 library(patchwork)
 library(geosphere)
+library(gridExtra)
+library(purrr)
 
 ```
 ```{r}
@@ -94,5 +96,128 @@ acoustic<-read_csv("C:/Users/yasem/OneDrive/Masaüstü/proje/acoustic.csv",
 glimpse(acoustic)
 
 ```
+
+
+# **5.AŞAMA**
+
+```{r}
+# Create a list of variables to keep
+
+variables_keep<-c("Interval","Layer","Sv_mean","Frequency","Date_M","Time_S","Time_E","Lat_M","Lon_M")
+
+# Select and filter the data
+
+Sv_layer1<-acoustic%>%
+  select(one_of(variables_keep))%>%
+  rename(Spatial_interval=Interval,Date=Date_M)%>%
+  filter(Layer=="1")%>%
+  mutate(Datetime_start=Date+Time_S,
+         Datetime_end=Date+Time_E)%>%
+  arrange(Datetime_start)
+
+# Glimpse the cleaned acoustic data
+
+glimpse(Sv_layer1)
+```
+# **6. AŞAMA**
+
+```{r}
+# Data prep for temporal interval join
+
+Sv<-Sv_layer1%>%
+  mutate(Distance_between=c(0,geosphere::distHaversine(cbind(Lon_M[-n()],Lat_M[-n()]),
+                                                      cbind(Lon_M[ -1],Lat_M[ -1]))),
+                            Distance_along=cumsum(Distance_between))%>%
+           na_if(-999)%>%
+           mutate(Time_interval=interval(Datetime_start,Datetime_end))
+         
+# Glimpse the data    
+
+glimpse(Sv)
+```
+# **7.AŞAMA**
+
+```{r}
+library(purrr)
+# Function: assign Spatial_interval to bottom points that fall within Time_interval 
+
+get_Interval_by_time<-function(bottom_data){
+  res<-Sv$Spatial_interval[bottom_data %within% Sv$Time_interval]
+  if(length(res)==0) return(NA)       
+  return(res)
+}
+
+
+# Map the track line interval value to bottom_clean 
+
+bottom_spatial_interval_segments<-bottom_clean %>%
+  mutate(trackline_interval=purrr::map_dbl(date_time,get_Interval_by_time))
+
+# Inspect the first 15 rows 
+
+head(bottom_spatial_interval_segments,15)
+
+```
+
+
+# **8.AŞAMA**
+
+```{r}
+# Group bottom_clean and calculate the mean depth
+
+bottom_intervals<-bottom_spatial_interval_segments %>%
+  group_by(trackline_interval) %>%
+  summarize(depth_mean=mean(depth)) %>%
+  ungroup()
+
+#Join the bottom intervals data to the acoustic data
+
+Sv_and_depth<-Sv %>%
+  left_join(bottom_intervals,by=c("Spatial_interval"="trackline_interval")) %>%
+  mutate(depth_plot=ifelse(depth_mean >=250,250,depth_mean))
+
+#Glimpse the data
+
+glimpse(Sv_and_depth)
+```
+
+# **9.AŞAMA**
+
+```{r}
+# Top panel
+
+Sv_mean_plot<-ggplot(Sv_and_depth, aes(Distance_along,Sv_mean))+
+  geom_line()+
+  labs(y=expression(mean~volume~backscatter~s[v]~(dB)))+
+  theme(axis.title.x=element_blank())
+
+# Bottom panel
+
+bathymetry<-ggplot(Sv_and_depth,aes(Distance_along,depth_plot))+
+  geom_line(size=0.5)+
+  scale_y_reverse()+
+  labs(x="Distance along trackline (m)",y="Depth(m)")
+
+# Display the two panels in one figure
+
+Sv_mean_plot/bathymetry
+```
+
+
+
+
+# **10.AŞAMA**
+
+```{r}
+# Where do you think the fish are along this track line?
+
+# Options:Shelf,Shelf Break ,Offshore
+
+(where_are_the_fishes<-"Shelf")
+```
+
+
+
+
 
 

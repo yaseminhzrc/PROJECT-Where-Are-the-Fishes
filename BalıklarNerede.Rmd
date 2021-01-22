@@ -530,7 +530,7 @@ Sv_mean_plot/bathymetry
 
 ### AÇIKLAMALAR
 
-Güzel görünen grafik!
+Güzel görünen grafik!!
 
 Tüm akustik geri saçılımın sadece yüzme kesesi olan balıklardan geldiğini ve daha büyük geri saçılmanın daha yüksek balık yoğunluklarını gösterdiğini varsayarsak, bu yol hattındaki balıkların çoğu nerede?
 

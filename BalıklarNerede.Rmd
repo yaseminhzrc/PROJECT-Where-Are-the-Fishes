@@ -4,7 +4,6 @@ author: "Yasemin Hızarcı"
 date: "16 01 2021"
 output:
         html_document:
-          highlight: haddock
           toc: true
           toc_depth: 3
           toc_float: true
@@ -12,8 +11,6 @@ output:
             
           
 ---
-122455
-sdkfjsd
 
 <style type="text/css">
 body,td {
@@ -138,7 +135,7 @@ library(purrr)
 ```{r}
 # Derinlik verilerini okutalım
 
-bottom<-read_csv("C:/Users/yasem/OneDrive/Masaüstü/proje/bottom_line.csv", 
+bottom<-read_csv("C:/Users/yasem/OneDrive/Masaüstü/BaliklarNerede/bottom_line.csv", 
                  col_types = cols(Ping_date=col_datetime(format="%m/%d/%Y")))%>% 
   #Ping_date degişkeni ay,gün,yıl olarak tarih formatına dönüştürüldü.
   rename_all(tolower) 
@@ -280,7 +277,7 @@ Balık olması durumunda, yol hattının daha yüksek / daha düşük yoğunlukl
 
 # Akustik veriyi okutalım
 
-acoustic<-read_csv("C:/Users/yasem/OneDrive/Masaüstü/proje/acoustic.csv",
+acoustic<-read_csv("C:/Users/yasem/OneDrive/Masaüstü/BaliklarNerede/acoustic.csv",
                    col_types=cols(Date_M=col_datetime(format="%Y%m%d")))%>%  
   #Date_M değişkeni  Yıl,ay,gün olarak tarih formatına dönüştürüldü.
   filter(Lon_M !=999.0) 

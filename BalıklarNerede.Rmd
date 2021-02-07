@@ -1,7 +1,6 @@
 ---
 title: "BALIKLAR NEREDE?"
-author: "Yasemin Hızarcı"
-date: "16 01 2021"
+author: "Yasemin Hızarcı,Sevim Özinan,Mehtap Fil"
 output:
         html_document:
           toc: true
@@ -68,16 +67,27 @@ font-weight:600;
 knitr::opts_chunk$set(class.source="watch-out",class.output="watch-out1")
 ```
 
+
+```{r echo=FALSE, fig.align='center', out.width='100%'}
+knitr::include_graphics('C:/Users/yasem/OneDrive/Masaüstü/analiz.jpg')
+
+```
+
+
+
+
 # 1.AŞAMA 
 
 ## Backscatter(Geri Saçılma) - Okyanusta uzaktan algılama
+
+
 
 
 ### **AÇIKLAMALAR**
 
 Deniz bilimcileri, okyanustaki organizmaların dağılımını anlamak için akustik geri saçılım kullanırlar.
 
-Bu analizde, aktif akustik verileri tartışacağız ve batimetri (deniz tabanının derinliği) ile ilişkili olarak yüzme keseli balıklarla ilişkili ortalama hacim geri saçılımını çizeceğiz.
+Bu analizde, aktif akustik verileri tartışacağız ve batimetri (deniz tabanının derinliği) ile ilişkili olarak yüzme keseli balıklara ilişkili ortalama hacim geri saçılımını çizeceğiz.
 
 Bu akustik veriler, Orta Atlantik Körfezi'ndeki (NOAA seyir HB1103) Shelf Break'den geçen bir araştırma gemisinden toplandı ve Echoview yazılımı kullanılarak ön işlemden geçirildi.
 
@@ -107,11 +117,11 @@ Bu akustik veriler, Orta Atlantik Körfezi'ndeki (NOAA seyir HB1103) Shelf Break
 
 
 
-Bunu bildiğim iyi oldu
 
-Bu projede, sen öğretilen becerilerini edeceğiz Tidyverse içinde Verilerle Çalışma ve R Tarihler ve saatlerle çalışma . Sen bir fonksiyonu kullanarak veri kümelerini, enlem ve boylam gelen hesaplamak mesafeler katılacak geospherepaketi ve basit görselleştirme yapmak ggplot2 ve patchwork.
+```{r echo=FALSE, fig.align='center', out.width='80%'}
+knitr::include_graphics('C:/Users/yasem/OneDrive/Masaüstü/paketler.png')
 
-Çoğul balık balıktır. Balıklar , birden fazla balık türünü ifade eder.
+```
 
 
 
@@ -123,12 +133,10 @@ Bu projede, sen öğretilen becerilerini edeceğiz Tidyverse içinde Verilerle �
 library(tidyverse)
 library(dplyr)
 library(readr)
-library(lubridate)
-library(ggplot2)
-library(patchwork)
-library(geosphere)
-library(gridExtra)
-library(purrr)
+library(lubridate) #tarih düzenlemeleri için
+library(ggplot2) #grafikler için
+library(patchwork) #aynı anda birden fazla grafiği yan yana çizdirmek için
+library(geosphere) #coğrafi hesaplamalar için kullanılıyor.Enlem ve boylam arasındaki mesafenin hesaplanması için kullanılacak.
 
 ```
 
@@ -137,7 +145,7 @@ library(purrr)
 
 bottom<-read_csv("C:/Users/yasem/OneDrive/Masaüstü/BaliklarNerede/bottom_line.csv", 
                  col_types = cols(Ping_date=col_datetime(format="%m/%d/%Y")))%>% 
-  #Ping_date degişkeni ay,gün,yıl olarak tarih formatına dönüştürüldü.
+  #veri setinde Ping_date degişkeni ay,gün,yıl formatındaydı.Bu değişken tarih formatına dönüştürüldü.
   rename_all(tolower) 
 #rename_all tüm değişken isimlerine bir işlem uygulamak için kullanılır.
 #Tüm değişken isimleri küçük harfe dönüştürüldü.
@@ -150,6 +158,11 @@ glimpse(bottom) #verinin yapısını inceleyeceğiz.
 ## "Shelf Break"Nedir?
 
 ### AÇIKLAMA
+
+```{r echo=FALSE, fig.align='center', out.width='40%'}
+knitr::include_graphics('C:/Users/yasem/OneDrive/Masaüstü/gemi1.png')
+
+```
 
 
 Soldaki haritadaki kırmızı çizgi, geminin Orta Atlantik Körfezi'ndeki "Shelf Break" boyunca izlediği yol. Ama "Shelf Break" nedir? 
@@ -207,7 +220,7 @@ Artık kötü veri noktalarını kaldırdığımıza ve geminin kat ettiği küm
 
 Geminin rotasının yatay görünümü, geminin ray hattından sapıp sapmadığını veya verilerde herhangi bir kesinti olup olmadığını bize gösterecektir.
 
-Ray çizgisi boyunca deniz tabanının derinliğinin bir grafiği bize Shelf Break'ın konumunu gösterecektir. İzleme hattı verilerinin uzamsal analizinde, genellikle sp ve sf paketlerinde çalışırdık, ancak bu kendi başına bir konudur. Şimdilik, iz çizgisi boyunca enlem, boylam, derinlik ve mesafe ile birkaç iz çizgisi grafiği oluşturacağız.
+rota çizgisi boyunca deniz tabanının derinliğinin bir grafiği bize Shelf Break'ın konumunu gösterecektir. İzleme hattı verilerinin uzamsal analizinde, genellikle sp ve sf paketlerinde çalışırdık, ancak bu kendi başına bir konudur. Şimdilik, rota çizgisi boyunca enlem, boylam, derinlik ve mesafe ile birkaç rota çizgisi grafiği oluşturacağız.
 
 ### TALİMATLAR
 
@@ -234,7 +247,7 @@ p_ship_track <-ggplot(bottom_clean, aes(longitude,latitude))+
   geom_point(size=0.5)+ 
   #nokta grafiği çizdirilecektir ve nokta büyüklüğü ayarlanıyor.
   labs(x="Longitude",y="Latitude") 
-#x vey eksenlerine değişkenlerin isimleri verildi.
+#x ve y eksenlerine değişkenlerin isimleri verildi.
 
 # Geminin yolu boyunca deniz tabanının derinliğini çizin.
 
@@ -253,6 +266,12 @@ p_ship_track+p_bathymetry
 # 4.AŞAMA
 
 ## Burada balıklar,balıklar,balıklar
+
+
+```{r echo=FALSE, fig.align='center', out.width='140%'}
+knitr::include_graphics('C:/Users/yasem/OneDrive/Masaüstü/balıklar.jpg')
+
+```
 
 ### AÇIKLAMALAR
 
@@ -279,7 +298,7 @@ Balık olması durumunda, yol hattının daha yüksek / daha düşük yoğunlukl
 
 acoustic<-read_csv("C:/Users/yasem/OneDrive/Masaüstü/BaliklarNerede/acoustic.csv",
                    col_types=cols(Date_M=col_datetime(format="%Y%m%d")))%>%  
-  #Date_M değişkeni  Yıl,ay,gün olarak tarih formatına dönüştürüldü.
+  #Date_M değişkeninin  Yıl,ay,gün formatında olduğu belirtildi ve  tarih formatına dönüştürüldü.
   filter(Lon_M !=999.0) 
 #Lon_M 999.0 a eşit olamayanlar filtrelendi.
 
@@ -327,7 +346,7 @@ variables_keep <- c("Interval", "Layer", "Sv_mean", "Frequency",
 
 Sv_layer1 <- acoustic %>%
     select(one_of(variables_keep)) %>%  
-  #Variables_keep deki değişkenelr seçildi
+  #Variables_keep deki değişkenler seçildi
     rename(Spatial_interval = Interval, Date = Date_M) %>% 
   #isim değişiklikleri yapıldı.
     filter(Layer == "1")  %>%   
@@ -346,6 +365,11 @@ glimpse(Sv_layer1)
 # 6. AŞAMA
 
 ## Biraz daha tartışma
+
+```{r echo=FALSE, fig.align='center', out.width='100%'}
+knitr::include_graphics('C:/Users/yasem/OneDrive/Masaüstü/derinlik.jpg')
+
+```
 
 
 ### AÇIKLAMA
@@ -483,6 +507,11 @@ glimpse(Sv_and_depth)
 Şimdi, yüksek ve düşük yoğunluklu balıkların rota hattı boyunca nerede olduğunu bulmak için Sv_mean'ı batimetriye (depth_plot) göre çizme zamanı. Y eksenlerimiz iki farklı ölçekte olduğundan, iki grafik oluşturacağız ve onları tek bir şekle yerleştirmek için patchwork paketini tekrar kullanacağız.
 İhtiyacınız olan tüm veriler  Sv_and_depth de.
 
+```{r echo=FALSE, fig.align='center', out.width='100%'}
+knitr::include_graphics('C:/Users/yasem/OneDrive/Masaüstü/batimetri.jpg')
+
+```
+
 ### TALİMATLAR
 
 <span style='color:maroon;font-weight:600'>*1)Sv_and_depth kullanarak son grafiği oluşturalım.*
@@ -549,4 +578,12 @@ shelf break için ortalama derinlik=133 metre.
 # Seçenekler:Shelf,Shelf Break ,Offshore
 
 (where_are_the_fishes<-"Shelf")
+```
+
+
+
+
+```{r echo=FALSE, fig.align='center', out.width='100%'}
+knitr::include_graphics('C:/Users/yasem/OneDrive/Masaüstü/balık.jpg')
+
 ```

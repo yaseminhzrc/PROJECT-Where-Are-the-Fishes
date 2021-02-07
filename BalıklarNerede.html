@@ -723,27 +723,200 @@ bottom_spatial_interval_segments &lt;- bottom_clean  %&gt;%
 # date_time değişkenine fonksiyon uygulandı ve trackline_interval oluşturuldu.
 
 # İlk 15 satırı inceleyin.
-head(bottom_spatial_interval_segments, 15)</code></pre>
-<pre class="watch-out1"><code>## # A tibble: 15 x 9
-##    ping_date           ping_time latitude longitude depth date_time          
-##    &lt;dttm&gt;              &lt;time&gt;       &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;dttm&gt;             
-##  1 2011-06-18 00:00:00 09:58:47      38.3     -74.0  68.8 2011-06-18 09:58:47
-##  2 2011-06-18 00:00:00 09:58:52      38.3     -74.0  68.8 2011-06-18 09:58:52
-##  3 2011-06-18 00:00:00 09:58:57      38.3     -74.0  68.4 2011-06-18 09:58:57
-##  4 2011-06-18 00:00:00 09:59:02      38.3     -74.0  68.4 2011-06-18 09:59:02
-##  5 2011-06-18 00:00:00 09:59:07      38.3     -74.0  68.4 2011-06-18 09:59:07
-##  6 2011-06-18 00:00:00 09:59:12      38.3     -74.0  68.4 2011-06-18 09:59:12
-##  7 2011-06-18 00:00:00 09:59:17      38.3     -74.0  68.4 2011-06-18 09:59:17
-##  8 2011-06-18 00:00:00 09:59:22      38.3     -74.0  68.4 2011-06-18 09:59:22
-##  9 2011-06-18 00:00:00 09:59:27      38.3     -74.0  68.4 2011-06-18 09:59:27
-## 10 2011-06-18 00:00:00 09:59:32      38.3     -74.0  68.4 2011-06-18 09:59:32
-## 11 2011-06-18 00:00:00 09:59:37      38.3     -74.0  68.3 2011-06-18 09:59:37
-## 12 2011-06-18 00:00:00 09:59:42      38.3     -74.0  68.3 2011-06-18 09:59:42
-## 13 2011-06-18 00:00:00 09:59:47      38.3     -74.0  68.3 2011-06-18 09:59:47
-## 14 2011-06-18 00:00:00 09:59:52      38.3     -74.0  68.3 2011-06-18 09:59:52
-## 15 2011-06-18 00:00:00 09:59:57      38.3     -74.0  68.3 2011-06-18 09:59:57
-## # ... with 3 more variables: distance_between &lt;dbl&gt;, distance_along &lt;dbl&gt;,
-## #   trackline_interval &lt;dbl&gt;</code></pre>
+knitr::kable(head(bottom_spatial_interval_segments, 15))</code></pre>
+<table style="width:100%;">
+<colgroup>
+<col width="9%" />
+<col width="8%" />
+<col width="7%" />
+<col width="8%" />
+<col width="7%" />
+<col width="16%" />
+<col width="14%" />
+<col width="12%" />
+<col width="15%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">ping_date</th>
+<th align="left">ping_time</th>
+<th align="right">latitude</th>
+<th align="right">longitude</th>
+<th align="right">depth</th>
+<th align="left">date_time</th>
+<th align="right">distance_between</th>
+<th align="right">distance_along</th>
+<th align="right">trackline_interval</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">2011-06-18</td>
+<td align="left">09:58:47</td>
+<td align="right">38.29429</td>
+<td align="right">-73.99677</td>
+<td align="right">68.78515</td>
+<td align="left">2011-06-18 09:58:47</td>
+<td align="right">0.00000</td>
+<td align="right">0.00000</td>
+<td align="right">4</td>
+</tr>
+<tr class="even">
+<td align="left">2011-06-18</td>
+<td align="left">09:58:52</td>
+<td align="right">38.29424</td>
+<td align="right">-73.99666</td>
+<td align="right">68.77859</td>
+<td align="left">2011-06-18 09:58:52</td>
+<td align="right">11.47956</td>
+<td align="right">11.47956</td>
+<td align="right">4</td>
+</tr>
+<tr class="odd">
+<td align="left">2011-06-18</td>
+<td align="left">09:58:57</td>
+<td align="right">38.29418</td>
+<td align="right">-73.99653</td>
+<td align="right">68.37986</td>
+<td align="left">2011-06-18 09:58:57</td>
+<td align="right">12.77948</td>
+<td align="right">24.25904</td>
+<td align="right">4</td>
+</tr>
+<tr class="even">
+<td align="left">2011-06-18</td>
+<td align="left">09:59:02</td>
+<td align="right">38.29411</td>
+<td align="right">-73.99641</td>
+<td align="right">68.37986</td>
+<td align="left">2011-06-18 09:59:02</td>
+<td align="right">13.24406</td>
+<td align="right">37.50310</td>
+<td align="right">4</td>
+</tr>
+<tr class="odd">
+<td align="left">2011-06-18</td>
+<td align="left">09:59:07</td>
+<td align="right">38.29404</td>
+<td align="right">-73.99627</td>
+<td align="right">68.37986</td>
+<td align="left">2011-06-18 09:59:07</td>
+<td align="right">14.17050</td>
+<td align="right">51.67360</td>
+<td align="right">4</td>
+</tr>
+<tr class="even">
+<td align="left">2011-06-18</td>
+<td align="left">09:59:12</td>
+<td align="right">38.29396</td>
+<td align="right">-73.99612</td>
+<td align="right">68.38039</td>
+<td align="left">2011-06-18 09:59:12</td>
+<td align="right">15.34577</td>
+<td align="right">67.01937</td>
+<td align="right">4</td>
+</tr>
+<tr class="odd">
+<td align="left">2011-06-18</td>
+<td align="left">09:59:17</td>
+<td align="right">38.29390</td>
+<td align="right">-73.99597</td>
+<td align="right">68.38039</td>
+<td align="left">2011-06-18 09:59:17</td>
+<td align="right">15.09648</td>
+<td align="right">82.11585</td>
+<td align="right">4</td>
+</tr>
+<tr class="even">
+<td align="left">2011-06-18</td>
+<td align="left">09:59:22</td>
+<td align="right">38.29383</td>
+<td align="right">-73.99582</td>
+<td align="right">68.37777</td>
+<td align="left">2011-06-18 09:59:22</td>
+<td align="right">15.72843</td>
+<td align="right">97.84428</td>
+<td align="right">4</td>
+</tr>
+<tr class="odd">
+<td align="left">2011-06-18</td>
+<td align="left">09:59:27</td>
+<td align="right">38.29375</td>
+<td align="right">-73.99564</td>
+<td align="right">68.37777</td>
+<td align="left">2011-06-18 09:59:27</td>
+<td align="right">18.05774</td>
+<td align="right">115.90203</td>
+<td align="right">4</td>
+</tr>
+<tr class="even">
+<td align="left">2011-06-18</td>
+<td align="left">09:59:32</td>
+<td align="right">38.29368</td>
+<td align="right">-73.99545</td>
+<td align="right">68.44719</td>
+<td align="left">2011-06-18 09:59:32</td>
+<td align="right">18.00171</td>
+<td align="right">133.90374</td>
+<td align="right">4</td>
+</tr>
+<tr class="odd">
+<td align="left">2011-06-18</td>
+<td align="left">09:59:37</td>
+<td align="right">38.29360</td>
+<td align="right">-73.99526</td>
+<td align="right">68.28604</td>
+<td align="left">2011-06-18 09:59:37</td>
+<td align="right">19.01490</td>
+<td align="right">152.91864</td>
+<td align="right">4</td>
+</tr>
+<tr class="even">
+<td align="left">2011-06-18</td>
+<td align="left">09:59:42</td>
+<td align="right">38.29351</td>
+<td align="right">-73.99506</td>
+<td align="right">68.28604</td>
+<td align="left">2011-06-18 09:59:42</td>
+<td align="right">19.74884</td>
+<td align="right">172.66748</td>
+<td align="right">4</td>
+</tr>
+<tr class="odd">
+<td align="left">2011-06-18</td>
+<td align="left">09:59:47</td>
+<td align="right">38.29343</td>
+<td align="right">-73.99486</td>
+<td align="right">68.28604</td>
+<td align="left">2011-06-18 09:59:47</td>
+<td align="right">20.02998</td>
+<td align="right">192.69746</td>
+<td align="right">5</td>
+</tr>
+<tr class="even">
+<td align="left">2011-06-18</td>
+<td align="left">09:59:52</td>
+<td align="right">38.29335</td>
+<td align="right">-73.99464</td>
+<td align="right">68.26205</td>
+<td align="left">2011-06-18 09:59:52</td>
+<td align="right">20.51630</td>
+<td align="right">213.21376</td>
+<td align="right">5</td>
+</tr>
+<tr class="odd">
+<td align="left">2011-06-18</td>
+<td align="left">09:59:57</td>
+<td align="right">38.29328</td>
+<td align="right">-73.99442</td>
+<td align="right">68.26305</td>
+<td align="left">2011-06-18 09:59:57</td>
+<td align="right">21.04787</td>
+<td align="right">234.26163</td>
+<td align="right">5</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 </div>

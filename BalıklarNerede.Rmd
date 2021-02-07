@@ -445,7 +445,7 @@ bottom_spatial_interval_segments <- bottom_clean  %>%
 # date_time değişkenine fonksiyon uygulandı ve trackline_interval oluşturuldu.
 
 # İlk 15 satırı inceleyin.
-head(bottom_spatial_interval_segments, 15)
+knitr::kable(head(bottom_spatial_interval_segments, 15))
 
 ```
 

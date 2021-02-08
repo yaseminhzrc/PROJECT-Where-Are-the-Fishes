@@ -343,11 +343,11 @@ font-weight:600;
 <pre class="r watch-out"><code># Paketleri Yükleyelim
 
 library(tidyverse)
-library(dplyr)
-library(readr)
-library(lubridate) #tarih düzenlemeleri için
-library(ggplot2) #grafikler için
-library(patchwork) #aynı anda birden fazla grafiği yan yana çizdirmek için
+library(dplyr) #veri üzerinde düzenlemeler yapabilmek için kullanılacak.
+library(readr) #verileri okutmak için kullanılacak.
+library(lubridate) #tarihlerle çalışabilmek için kullanılacak.
+library(ggplot2) #grafikler için kullanılacak.
+library(patchwork) #aynı anda birden fazla grafiği çizdirebilmek için kullanılacak.
 library(geosphere) #coğrafi hesaplamalar için kullanılıyor.Enlem ve boylam arasındaki mesafenin hesaplanması için kullanılacak.</code></pre>
 <pre class="r watch-out"><code># Derinlik verilerini okutalım
 
@@ -705,7 +705,7 @@ glimpse(Sv)</code></pre>
 <p><span style="color:maroon;font-weight:600"><em>1)Temizlenmiş Bottom verisindeki her noktaya doğru uzamsal aralığı atayın .get_Interval_by_time()’ı oluşturun.</em></p>
 <p><span style="color:maroon;font-weight:600"><em>2)bottom_clean verisinde trackline_interval’ı map_dbl() kullanarak oluşturun.</em></p>
 <p><span style="color:maroon;font-weight:600"><em>3)İlk 15 satırı inceleyin.trackline_interval sütununa dikkat edin.</em></p>
-<p><span style="color:maroon;font-weight:600"><em>4)get_Interval_by_time();akustik verilerden Spatial_interval değişkeninin bottom verisindeki akustik zamansal aralıklarla düşen noktalara Time_interval değerleri atayan bir işlevdir(buraya tekrar bak!!)</em></p>
+<p><span style="color:maroon;font-weight:600"><em>4)get_Interval_by_time();akustik verilerden Spatial_interval değişkeninin bottom verisindeki akustik zamansal aralıklarla düşen noktalara Time_interval değerleri atayan bir işlevdir</em></p>
 <pre class="r watch-out"><code># İşlevi adlandırın.
 get_Interval_by_time &lt;- function(bottom_data){
   res &lt;- Sv$Spatial_interval[bottom_data%within%Sv$Time_interval] 

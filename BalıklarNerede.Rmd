@@ -257,9 +257,9 @@ glimpse(bottom_clean) #değişkenlerin yapısına bakalım
 
 Artık kötü veri noktalarını kaldırdığımıza ve geminin kat ettiği kümülatif mesafeyi hesapladığımıza göre, verileri planlayalım.
 
-Geminin rotasının yatay görünümü, geminin ray hattından sapıp sapmadığını veya verilerde herhangi bir kesinti olup olmadığını bize gösterecektir.
+Geminin rotasının yatay görünümü, geminin rota hattından sapıp sapmadığını veya verilerde herhangi bir kesinti olup olmadığını bize gösterecektir.
 
-rota çizgisi boyunca deniz tabanının derinliğinin bir grafiği bize Shelf Break'ın konumunu gösterecektir. İzleme hattı verilerinin uzamsal analizinde, genellikle sp ve sf paketlerinde çalışırdık, ancak bu kendi başına bir konudur. Şimdilik, rota çizgisi boyunca enlem, boylam, derinlik ve mesafe ile birkaç rota çizgisi grafiği oluşturacağız.
+Rota çizgisi boyunca deniz tabanının derinliğinin bir grafiği bize Shelf Break'ın konumunu gösterecektir. İzleme hattı verilerinin uzamsal analizinde, genellikle sp ve sf paketlerinde çalışırdık, ancak bu kendi başına bir konudur. Şimdilik, rota çizgisi boyunca enlem, boylam, derinlik ve mesafe ile birkaç rota çizgisi grafiği oluşturacağız.
 
 ### TALİMATLAR
 
@@ -340,9 +340,10 @@ Balık olması durumunda, yol hattının daha yüksek / daha düşük yoğunlukl
 
 acoustic<-read_csv("C:/Users/yasem/OneDrive/Masaüstü/BaliklarNerede/acoustic.csv",
                    col_types=cols(Date_M=col_datetime(format="%Y%m%d")))%>%  
-  #Date_M değişkeninin  Yıl,ay,gün formatında olduğu belirtildi ve  tarih formatına dönüştürüldü.
+  # Date_M değişkeninin  Yıl,ay,gün formatında olduğu belirtildi ve
+  # tarih formatına dönüştürüldü.
   filter(Lon_M !=999.0) 
-#Lon_M 999.0 a eşit olamayanlar filtrelendi.
+# Lon_M 999.0 a eşit olmayanlar filtrelendi.
 
 # Verinin yapısını inceleyelim
 glimpse(acoustic)
@@ -443,7 +444,7 @@ Sv <- Sv_layer1 %>%
   #Distance_between için kümülatif toplamlar bulundu ve Distance_along oluşturuldu.
     na_if(-999) %>%  #-999'un NA oldugu belirtildi.
     mutate(Time_interval = interval(Datetime_start, Datetime_end)) 
-#interval() başlangıç ve bitiş tarihlerini yan yana getirerek birleştirdi 
+#interval() komutu başlangıç ve bitiş tarihlerini yan yana getirerek birleştirdi 
 #Time_interval oluşturuldu.
 
 # Veriyi inceleyelim
@@ -474,8 +475,9 @@ Akustik dosyada derinlik bilgisi yok. Bu tam olarak doğru değil. Bu 78 değiş
 # İşlevi adlandırın.
 get_Interval_by_time <- function(bottom_data){
   res <- Sv$Spatial_interval[bottom_data%within%Sv$Time_interval] 
-  #veriye Sv verisindeki Time_interval aralıklarına göre,
-  #Sv deki Spatial_interval değerlerini atayacak bir fonksiyon oluşturuldu.
+  # mevcut veriden, Sv verisindeki Time_interval zaman aralığında olan yerler 
+  # alınarak buralara göre,Sv deki Spatial_interval değerlerini atayacak 
+  # bir fonksiyon oluşturuldu.
   if(length(res)==0) return(NA)         # NA lar
   return(res)
 }
@@ -484,8 +486,11 @@ get_Interval_by_time <- function(bottom_data){
 
 bottom_spatial_interval_segments <- bottom_clean  %>% 
     mutate(trackline_interval = purrr::map_dbl(date_time, get_Interval_by_time)) 
-#map_dbl çift vektörleri döndürür.
-# date_time değişkenine fonksiyon uygulandı ve trackline_interval oluşturuldu.
+# map_dbl çift vektörleri döndürür.
+# bottom_clean daki date_time değişkenine fonksiyon uygulandı 
+# ve sv deki Time_interval aralığında olan tarihler alınarak 
+# buralara denk gelen spatial interval değerleri atandı.
+# Bu şekilde bottom_clean verisinde trackline_interval değişkeni oluşturuldu.
 
 # İlk 15 satırı inceleyin.
 knitr::kable(head(bottom_spatial_interval_segments, 15))
@@ -507,7 +512,7 @@ Yalnızca ilk derinlik katmanına (0 ila 250 m) baktığımızı unutmayın. Tü
 
 <span style='color:maroon;font-weight:600'>*1)Her bir rota hattı aralığı için ortalama derinliği özetleyin.*
 
-<span style='color:maroon;font-weight:600'>*2)Grup bottom_spatial_interval_segments tarafından trackline_interval ve her aralık için ortalama derinliği özetler.*
+<span style='color:maroon;font-weight:600'>*2)Grup bottom_spatial_interval_segments tarafından trackline_interval ve her aralık için ortalama derinliği özetleyin.*
 
 <span style='color:maroon;font-weight:600'>*3)bottom_intervals'ı Akustik verilere katın ve 250 metreden büyük her derinlik değerini 250 ile değiştiren  depth_plot değişkenini oluşturun .*
 
@@ -518,20 +523,20 @@ Yalnızca ilk derinlik katmanına (0 ila 250 m) baktığımızı unutmayın. Tü
 
 bottom_intervals<-bottom_spatial_interval_segments %>%
   group_by(trackline_interval) %>% 
-  #veriyi trackline_interval ile grupluyoruz.
+  # veriyi trackline_interval ile grupluyoruz.
   summarize(depth_mean=mean(depth)) %>% 
   #derinliğin ortalamasını bulup depth_mean a eşitliyoruz. 
   ungroup()
 
-#Bottom_intervals verilerini akustik veriyle birleştirin
+# Bottom_intervals verilerini akustik veriyle birleştirin
 
 Sv_and_depth<-Sv %>%
   left_join(bottom_intervals,by=c("Spatial_interval"="trackline_interval")) %>% 
-  #bottom_intervals verisindeki tracline_interval değişkeninin ismi,
-  #Sv verisi ile ortak olması için "Spatial_inyterval ismi ile değiştirildi.
-  #iki veri birleştirildi.
+  # bottom_intervals verisindeki tracline_interval değişkeninin 
+  # Spatial_interval değişkeni olduğu belirtildi ve 
+  # iki veri bu ortak Spatial_interval değişkeni kullanılarak birleştirildi.
   mutate(depth_plot=ifelse(depth_mean >=250,250,depth_mean))
-#250 den büyük her ortalama derinlik değeri 250 oldu.
+# 250 den büyük her ortalama derinlik değeri 250 oldu.
 #bu şekilde depth_plot değişkeni oluşturuldu.
 
 # Veriyi inceleyelim

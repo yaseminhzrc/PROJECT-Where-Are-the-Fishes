@@ -235,6 +235,8 @@ mutate(date_time=ping_date + ping_time,
 glimpse(bottom_clean) #değişkenlerin yapısına bakalım
 ```
 
+(R'deki sütun sıraları boyunca enlem ve boylam arasındaki mesafeyi hesaplamak için yararlandığımız kaynak : https://stackoverflow.com/questions/47115848/how-can-i-calculate-the-distance-between-latitude-and-longitude-along-rows-of-co)
+
 # 3. AŞAMA 
 
 ## Nereye gidersen git,oradasın
@@ -288,6 +290,7 @@ p_bathymetry<-ggplot(bottom_clean,aes(distance_along,depth))+
 p_ship_track+p_bathymetry
 ```
 
+(Yararlandığımız kaynak : https://www.data-imaginist.com/2019/patch-it-up-and-send-it-out/)
 # 4.AŞAMA
 
 ## Burada balıklar,balıklar,balıklar
@@ -332,6 +335,7 @@ glimpse(acoustic)
 
 ```
 
+(Yararlandığımız kaynak : https://www.rdocumentation.org/packages/base/versions/3.5.1/topics/Logic , https://www.rdocumentation.org/packages/base/versions/3.5.2/topics/strptime )
 
 # 5.AŞAMA
 
@@ -574,7 +578,7 @@ Sv_mean_plot/bathymetry
 ```
 
 
-
+(Yararlandığımız kaynak: https://ggplot2.tidyverse.org/reference/scale_continuous.html , https://www.data-imaginist.com/2019/patch-it-up-and-send-it-out/ , https://stackoverflow.com/questions/17334759/subscript-letters-in-ggplot-axis-label)
 
 # 10.AŞAMA
 
@@ -612,3 +616,22 @@ shelf break için ortalama derinlik=133 metre.
 knitr::include_graphics('C:/Users/yasem/OneDrive/Masaüstü/balık.jpg')
 
 ```
+
+
+
+GitHub Linki : https://github.com/yaseminhzrc/BaliklarNerede
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

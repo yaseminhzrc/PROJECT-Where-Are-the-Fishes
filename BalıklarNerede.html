@@ -309,17 +309,19 @@
      <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate) <span class="co">#tarihlerle çalışabilmek için kullanılacak.</span></span>
      <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2) <span class="co">#grafikler için kullanılacak.</span></span>
      <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(patchwork) <span class="co">#aynı anda birden fazla grafiği çizdirebilmek için kullanılacak.</span></span>
-     <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(geosphere) <span class="co">#coğrafi hesaplamalar için kullanılıyor.Enlem ve boylam arasındaki mesafenin hesaplanması için kullanılacak.</span></span></code></pre></div>
+     <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(geosphere) <span class="co">#coğrafi hesaplamalar için kullanılıyor.</span></span>
+     <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co">#Enlem ve boylam arasındaki mesafenin hesaplanması için kullanılacak.</span></span></code></pre></div>
      <div class="sourceCode" id="cb2"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Derinlik verilerini okutalım</span></span>
      <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
      <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>bottom<span class="ot">&lt;-</span><span class="fu">read_csv</span>(<span class="st">&quot;C:/Users/yasem/OneDrive/Masaüstü/BaliklarNerede/bottom_line.csv&quot;</span>, </span>
      <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">col_types =</span> <span class="fu">cols</span>(<span class="at">Ping_date=</span><span class="fu">col_datetime</span>(<span class="at">format=</span><span class="st">&quot;%m/%d/%Y&quot;</span>)))<span class="sc">%&gt;%</span> </span>
-     <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="co">#veri setinde Ping_date degişkeni ay,gün,yıl formatındaydı.Bu değişken tarih formatına dönüştürüldü.</span></span>
-     <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename_all</span>(tolower) </span>
-     <span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co">#rename_all tüm değişken isimlerine bir işlem uygulamak için kullanılır.</span></span>
-     <span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co">#Tüm değişken isimleri küçük harfe dönüştürüldü.</span></span>
-     <span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
-     <span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(bottom) <span class="co">#verinin yapısını inceleyeceğiz.</span></span></code></pre></div>
+     <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="co">#veri setinde Ping_date degişkeni ay,gün,yıl formatındaydı.</span></span>
+     <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Bu değişken tarih formatına dönüştürüldü.</span></span>
+     <span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename_all</span>(tolower) </span>
+     <span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co">#rename_all tüm değişken isimlerine bir işlem uygulamak için kullanılır.</span></span>
+     <span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co">#Tüm değişken isimleri küçük harfe dönüştürüldü.</span></span>
+     <span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
+     <span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(bottom) <span class="co">#verinin yapısını inceleyeceğiz.</span></span></code></pre></div>
      <pre class="watch-out1"><code>## Rows: 2,766
      ## Columns: 10
      ## $ ping_date         &lt;dttm&gt; 2011-06-18, 2011-06-18, 2011-06-18, 2011-06-18, ...

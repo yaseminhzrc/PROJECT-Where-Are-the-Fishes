@@ -44,6 +44,10 @@ font-weight:600;
 </style>
 
 
+```{r include=FALSE}
+library(knitr)
+library(rmdformats)
+```
  
 ```{css,echo=FALSE}
 .watch-out {
@@ -65,12 +69,17 @@ knitr::opts_chunk$set(class.source="watch-out",class.output="watch-out1")
 
 
 
+
+
+
 ```{r echo=FALSE, fig.align='center', out.width='100%'}
 knitr::include_graphics('C:/Users/yasem/OneDrive/Masaüstü/analiz.jpg')
-library(knitr)
-library(rmdformats)
+
 
 ```
+
+
+
 
 
 
@@ -135,7 +144,8 @@ library(readr) #verileri okutmak için kullanılacak.
 library(lubridate) #tarihlerle çalışabilmek için kullanılacak.
 library(ggplot2) #grafikler için kullanılacak.
 library(patchwork) #aynı anda birden fazla grafiği çizdirebilmek için kullanılacak.
-library(geosphere) #coğrafi hesaplamalar için kullanılıyor.Enlem ve boylam arasındaki mesafenin hesaplanması için kullanılacak.
+library(geosphere) #coğrafi hesaplamalar için kullanılıyor.
+#Enlem ve boylam arasındaki mesafenin hesaplanması için kullanılacak.
 
 ```
 
@@ -144,7 +154,8 @@ library(geosphere) #coğrafi hesaplamalar için kullanılıyor.Enlem ve boylam a
 
 bottom<-read_csv("C:/Users/yasem/OneDrive/Masaüstü/BaliklarNerede/bottom_line.csv", 
                  col_types = cols(Ping_date=col_datetime(format="%m/%d/%Y")))%>% 
-  #veri setinde Ping_date degişkeni ay,gün,yıl formatındaydı.Bu değişken tarih formatına dönüştürüldü.
+  #veri setinde Ping_date degişkeni ay,gün,yıl formatındaydı.
+  #Bu değişken tarih formatına dönüştürüldü.
   rename_all(tolower) 
 #rename_all tüm değişken isimlerine bir işlem uygulamak için kullanılır.
 #Tüm değişken isimleri küçük harfe dönüştürüldü.

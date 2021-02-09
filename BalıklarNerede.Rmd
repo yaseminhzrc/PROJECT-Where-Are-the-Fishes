@@ -1,4 +1,5 @@
 ---
+<<<<<<< Updated upstream
 title: "BALIKLAR NEREDE?"
 author: "Yasemin Hızarcı,Sevim Özinan,Mehtap Fil"
 output:
@@ -62,9 +63,26 @@ font-weight:600;
 ```
 
 
+=======
+title: "Balıklar Nerede? "
+author: 
+output:
+  rmdformats::material:
+    highlight: kate
+    self_contained: true
+    code_folding: show
+    thumbnails: true
+    gallery: true
+    fig_width: 4
+    fig_height: 4
+    df_print: kable
+---
+>>>>>>> Stashed changes
 
 ```{r setup, include = FALSE}
-knitr::opts_chunk$set(class.source="watch-out",class.output="watch-out1")
+library(knitr)
+library(rmdformats)
+
 ```
 
 

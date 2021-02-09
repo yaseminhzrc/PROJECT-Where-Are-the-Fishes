@@ -189,6 +189,30 @@ Bir uçurumun su altı versiyonu olarak tanımlanabilir.
 
 Çoğu deniz ekosisteminde, Shelf Break aynı zamanda birçok türe yiyecek ve yaşam alanı sağlayan oldukça dinamik ve verimli bir alandır. En küçük fitoplanktonlardan en büyük deniz canlılarına, köpekbalıklarına, deniz kuşlarına ve deniz kaplumbağalarına kadar hepsi bu alanı yaşam döngülerinin bir noktasında kullanırlar. Ve bu harika bölgeden bazı aktif akustik verilerle çalışacağız!
 
+
+**Veri Setimizdeki değişkenleri tanıyalım.** 
+
+ping_date : deniz altında gözlemlenen uğultuların tarihi. 
+
+ping_time : deniz altında gözlemlenen uğultuların saati. 
+
+ping_milliseconds : deniz altında gözlemlenen uğultuların kaç milisaniye boyunca sürdüğü. 
+
+latitude : enlem. 
+
+longitude : boylam.
+
+position_status : pozisyon durumu.
+
+depth : derinlik.
+
+line_status : hat durumu. 
+
+ping_status : uğultu durumu. 
+
+altitude: rakım. 
+
+
 Ama önce batimetri (derinlik) verilerini temizleyelim ve çizim için hazırlayalım.
 
 

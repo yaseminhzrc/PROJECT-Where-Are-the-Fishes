@@ -291,6 +291,8 @@ p_ship_track+p_bathymetry
 ```
 
 (Yararlandığımız kaynak : https://www.data-imaginist.com/2019/patch-it-up-and-send-it-out/)
+
+
 # 4.AŞAMA
 
 ## Burada balıklar,balıklar,balıklar

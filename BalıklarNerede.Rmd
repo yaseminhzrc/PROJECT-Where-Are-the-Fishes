@@ -73,7 +73,7 @@ knitr::opts_chunk$set(class.source="watch-out",class.output="watch-out1")
 
 
 ```{r echo=FALSE, fig.align='center', out.width='100%'}
-knitr::include_graphics('C:/Users/yasem/OneDrive/Masaüstü/analiz.jpg')
+knitr::include_graphics('C:/Users/yasem/OneDrive/Masaüstü/foto.jpeg')
 
 
 ```

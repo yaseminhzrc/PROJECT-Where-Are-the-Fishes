@@ -639,7 +639,7 @@ bathymetry<-ggplot(Sv_and_depth,aes(Distance_along,depth_plot))+
 
 Sv_mean_plot/bathymetry
 ```
-
+Oluşturduğumuz iki ayrı grafiğin x eksenleri aynı yani geminin aldığı yolu temsil ederken y eksenleri sırasıyla geri saçılım ve derinliği ifade etmektedir.İlk grafikte negatiflik yani geri saçılım arttıkça balık yoğunluğu artar. İkinci grafikte ise max derinlikte balıkların yoğunluğunun arttığını anlayabiliriz.
 
 (Yararlandığımız kaynak: https://ggplot2.tidyverse.org/reference/scale_continuous.html , https://www.data-imaginist.com/2019/patch-it-up-and-send-it-out/ , https://stackoverflow.com/questions/17334759/subscript-letters-in-ggplot-axis-label)
 

@@ -529,7 +529,12 @@ bottom_intervals<-bottom_spatial_interval_segments %>%
   ungroup()
 
 bottom_intervals
+```
 
+bottom_spatial_interval_segments verisinin trackline_interval e göre gruplanmış halini görüyoruz.Her grup için ortalama derinlik hesaplanmıştır.
+
+
+```{r}
 # Bottom_intervals verilerini akustik veriyle birleştirin
 
 Sv_and_depth<-Sv %>%
@@ -546,6 +551,8 @@ Sv_and_depth<-Sv %>%
 glimpse(Sv_and_depth)
 ```
 
+İki veri birleştirildi ve 16 değişkenden oluşan esas verimize ulaştık.Bu 16 değişkenin ilk 14 ü Sv verisinden,son ikisi ise bottom_intervals verisinden elde edilmiştir.
+
 # 9.AŞAMA
 
 ## Hepsini bir araya getirmek
@@ -554,8 +561,8 @@ glimpse(Sv_and_depth)
 
 Çok fazla veri tartışması yaptık!
 
-Şimdi, yüksek ve düşük yoğunluklu balıkların rota hattı boyunca nerede olduğunu bulmak için Sv_mean'ı batimetriye (depth_plot) göre çizme zamanı. Y eksenlerimiz iki farklı ölçekte olduğundan, iki grafik oluşturacağız ve onları tek bir şekle yerleştirmek için patchwork paketini tekrar kullanacağız.
-İhtiyacınız olan tüm veriler  Sv_and_depth de.
+Şimdi, yüksek ve düşük yoğunluklu balıkların rota hattı boyunca nerede olduğunu bulmak için Sv_mean'ı batimetriye (depth_plot) göre çizelim. Y eksenlerimiz iki farklı ölçekte olduğundan, iki grafik oluşturacağız ve onları tek bir şekle yerleştirmek için patchwork paketini tekrar kullanacağız.
+İhtiyacınız olan tüm veriler Sv_and_depth de mevcut.
 
 ```{r echo=FALSE, fig.align='center', out.width='100%'}
 knitr::include_graphics('C:/Users/yasem/OneDrive/Masaüstü/batimetri.jpg')

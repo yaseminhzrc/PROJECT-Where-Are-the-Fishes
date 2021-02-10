@@ -368,7 +368,11 @@ glimpse(acoustic)
 
 Vaov! 78 değişkenin 724 gözlemi! Bu, Echoview'den tam veri dışa aktarımıdır, ancak yalnızca hacim geri saçılım verileri, Sv_mean ve verileri çizmek için gereken diğer birkaç değişkenle ilgileneceğiz.
 
-Bu geri saçılım verileri, geminin yolu boyunca 200 metre (Interval(Aralık) değişkeninde numaralandırılmış), 250 metre derinlikte (Layer(Katman) değişkeninde numaralandırılmıştır), geminin yoluna ve derinliğine atıfta bulunan bir koordinat sistemi oluşturan Grid hücrelerine entegre edildi. . İlk derinlik katmanını keşfedeceğiz.
+Interval(aldığı yol) değişkeninde; 200 metre "1", 800 metre ise "3" olarak kodlanmıştır. Layer(Katman) değişkeninde ise 250 metre "1", 500 metre "2" olarak kodlanmıştır. 
+
+Bu geri saçılım verileri, geminin yolu boyunca 200 metre (Interval(Aralık) = 1), 250 metre derinlikte (Layer(Katman) = 1), geminin yoluna ve derinliğine atıfta bulunan bir koordinat sistemi oluşturan Grid hücrelerine entegre edildi.. İlk derinlik katmanını keşfedeceğiz.
+
+Interval(aldığı yol) değişkeninde; 200 metre "1", 800 metre ise "3" olarak kodlanmıştır. Layer(Katman) değişkeninde ise 250 metre "1", 500 metre "2" olarak kodlanmıştır. 
 
 ### TALİMATLAR
 
@@ -435,7 +439,7 @@ glimpse(Sv_layer1)
 
 **10)** <span style='color:maroon'>**Datetime_start:** *tarih ve başlangıç saatinin birleştirilişmiş hali*
 
-**10)** <span style='color:maroon'>**Datetime_end:** *tarih ve bitiş saatinin birleştirilişmiş hali*
+**11)** <span style='color:maroon'>**Datetime_end:** *tarih ve bitiş saatinin birleştirilişmiş hali*
 
 # 6. AŞAMA
 

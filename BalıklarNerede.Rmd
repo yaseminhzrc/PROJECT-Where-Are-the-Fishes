@@ -259,7 +259,7 @@ Artık kötü veri noktalarını kaldırdığımıza ve geminin kat ettiği küm
 
 Geminin rotasının yatay görünümü, geminin rota hattından sapıp sapmadığını veya verilerde herhangi bir kesinti olup olmadığını bize gösterecektir.
 
-Rota çizgisi boyunca deniz tabanının derinliğinin bir grafiği bize Shelf Break'ın konumunu gösterecektir. Şimdilik, rota çizgisi boyunca enlem, boylam, derinlik ve mesafe ile birkaç rota çizgisi grafiği oluşturacağız.
+Rota çizgisi boyunca deniz tabanının derinliğinin bir grafiği bize Shelf Break'ın konumunu gösterecektir. Şimdi, rota çizgisi boyunca enlem, boylam, derinlik ve mesafe ile birkaç rota çizgisi grafiği oluşturacağız.
 
 ### TALİMATLAR
 

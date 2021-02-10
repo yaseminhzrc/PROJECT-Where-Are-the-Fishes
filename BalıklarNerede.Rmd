@@ -265,7 +265,7 @@ Artık kötü veri noktalarını kaldırdığımıza ve geminin kat ettiği küm
 
 Geminin rotasının yatay görünümü, geminin rota hattından sapıp sapmadığını veya verilerde herhangi bir kesinti olup olmadığını bize gösterecektir.
 
-Rota çizgisi boyunca deniz tabanının derinliğinin bir grafiği bize Shelf Break'ın konumunu gösterecektir. İzleme hattı verilerinin uzamsal analizinde, genellikle sp ve sf paketlerinde çalışırdık, ancak bu kendi başına bir konudur. Şimdilik, rota çizgisi boyunca enlem, boylam, derinlik ve mesafe ile birkaç rota çizgisi grafiği oluşturacağız.
+Rota çizgisi boyunca deniz tabanının derinliğinin bir grafiği bize Shelf Break'ın konumunu gösterecektir. Şimdilik, rota çizgisi boyunca enlem, boylam, derinlik ve mesafe ile birkaç rota çizgisi grafiği oluşturacağız.
 
 ### TALİMATLAR
 
@@ -559,6 +559,8 @@ bottom_intervals<-bottom_spatial_interval_segments %>%
   #derinliğin ortalamasını bulup depth_mean a eşitliyoruz. 
   ungroup()
 
+bottom_intervals
+
 # Bottom_intervals verilerini akustik veriyle birleştirin
 
 Sv_and_depth<-Sv %>%
@@ -668,8 +670,9 @@ knitr::include_graphics('C:/Users/yasem/OneDrive/Masaüstü/balık.jpg')
 ```
 
 
+# GİTHUP LİNKİ
 
-GitHub Linki : https://github.com/yaseminhzrc/BaliklarNerede
+https://github.com/yaseminhzrc/BaliklarNerede
 
 
 

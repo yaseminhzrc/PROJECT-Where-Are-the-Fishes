@@ -528,6 +528,8 @@ bottom_intervals<-bottom_spatial_interval_segments %>%
   #derinliğin ortalamasını bulup depth_mean a eşitliyoruz. 
   ungroup()
 
+bottom_intervals
+
 # Bottom_intervals verilerini akustik veriyle birleştirin
 
 Sv_and_depth<-Sv %>%

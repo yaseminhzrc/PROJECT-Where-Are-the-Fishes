@@ -481,6 +481,7 @@ Sv <- Sv_layer1 %>%
 # Veriyi inceleyelim
 glimpse(Sv)
 ```
+
 # 7.AŞAMA
 
 ## Uzamsal olamıyor musunuz zamansal gidin
@@ -527,7 +528,6 @@ bottom_spatial_interval_segments <- bottom_clean  %>%
 knitr::kable(head(bottom_spatial_interval_segments, 15))
 
 ```
-
 
 # 8.AŞAMA
 
@@ -597,7 +597,6 @@ glimpse(Sv_and_depth)
 
 ```{r echo=FALSE, fig.align='center', out.width='100%'}
 knitr::include_graphics('C:/Users/yasem/OneDrive/Masaüstü/batimetri.jpg')
-
 ```
 
 ### TALİMATLAR
@@ -631,7 +630,7 @@ bathymetry<-ggplot(Sv_and_depth,aes(Distance_along,depth_plot))+
   labs(x="Distance along trackline (m)",y="Depth(m)")  
 #x ve y ekseni isimlendirildi.
 
-# İki paneli tek bir şekilde görüntüleyin
+# İki paneli tek bir şekilde görüntüleyelim
 
 Sv_mean_plot/bathymetry
 ```
@@ -656,14 +655,8 @@ Tüm akustik geri saçılımın sadece yüzme kesesi olan balıklardan geldiğin
 **Seçenekler: Shelf, Shelf Break, Offshore**
 
 
-shelf break için ortalama derinlik=133 metre.
-
-
-
 ```{r}
 # Bu yol boyunca balıkların nerede olduğunu düşünüyorsun?
-
-# Seçenekler:Shelf,Shelf Break ,Offshore
 
 (where_are_the_fishes<-"Shelf")
 ```
@@ -673,7 +666,6 @@ Grafik sonuçlarından balıkların yoğunluk gösterdiği bölge tespit edilmi�
 
 ```{r echo=FALSE, fig.align='center', out.width='100%'}
 knitr::include_graphics('C:/Users/yasem/OneDrive/Masaüstü/balık.jpg')
-
 ```
 
 

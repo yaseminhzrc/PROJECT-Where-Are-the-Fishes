@@ -667,7 +667,7 @@ shelf break için ortalama derinlik=133 metre.
 
 (where_are_the_fishes<-"Shelf")
 ```
-
+Grafik sonuçlarından balıkların yoğunluk gösterdiği bölge tespit edilmiştir. Bu bölge birçok türe yiyecek ve yaşam alanı sağlayan oldukça dinamik ve verimli bir alan olan Shelf bölgesidir.
 
 
 

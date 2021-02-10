@@ -73,14 +73,12 @@ knitr::opts_chunk$set(class.source="watch-out",class.output="watch-out1")
 
 
 ```{r echo=FALSE, fig.align='center', out.width='100%'}
-<<<<<<< HEAD
-knitr::include_graphics('C:/Users/DELL/Desktop/fish.jpg')
+
 library(knitr)
 library(rmdformats)
-=======
+
 knitr::include_graphics('C:/Users/yasem/OneDrive/Masaüstü/foto.jpeg')
 
->>>>>>> bc1ea834126266f79469f160135ec0300880d5d5
 
 ```
 
@@ -367,8 +365,6 @@ glimpse(acoustic)
 
 
 Vaov! 78 değişkenin 724 gözlemi! Bu, Echoview'den tam veri dışa aktarımıdır, ancak yalnızca hacim geri saçılım verileri, Sv_mean ve verileri çizmek için gereken diğer birkaç değişkenle ilgileneceğiz.
-
-Interval(aldığı yol) değişkeninde; 200 metre "1", 800 metre ise "3" olarak kodlanmıştır. Layer(Katman) değişkeninde ise 250 metre "1", 500 metre "2" olarak kodlanmıştır. 
 
 Bu geri saçılım verileri, geminin yolu boyunca 200 metre (Interval(Aralık) = 1), 250 metre derinlikte (Layer(Katman) = 1), geminin yoluna ve derinliğine atıfta bulunan bir koordinat sistemi oluşturan Grid hücrelerine entegre edildi.. İlk derinlik katmanını keşfedeceğiz.
 

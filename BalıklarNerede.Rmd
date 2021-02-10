@@ -44,6 +44,10 @@ font-weight:600;
 </style>
 
 
+```{r include=FALSE}
+library(knitr)
+library(rmdformats)
+```
  
 ```{css,echo=FALSE}
 .watch-out {
@@ -65,12 +69,23 @@ knitr::opts_chunk$set(class.source="watch-out",class.output="watch-out1")
 
 
 
+
+
+
 ```{r echo=FALSE, fig.align='center', out.width='100%'}
+<<<<<<< HEAD
 knitr::include_graphics('C:/Users/DELL/Desktop/fish.jpg')
 library(knitr)
 library(rmdformats)
+=======
+knitr::include_graphics('C:/Users/yasem/OneDrive/Masaüstü/foto.jpeg')
+
+>>>>>>> bc1ea834126266f79469f160135ec0300880d5d5
 
 ```
+
+
+
 
 
 
@@ -135,7 +150,8 @@ library(readr) #verileri okutmak için kullanılacak.
 library(lubridate) #tarihlerle çalışabilmek için kullanılacak.
 library(ggplot2) #grafikler için kullanılacak.
 library(patchwork) #aynı anda birden fazla grafiği çizdirebilmek için kullanılacak.
-library(geosphere) #coğrafi hesaplamalar için kullanılıyor.Enlem ve boylam arasındaki mesafenin hesaplanması için kullanılacak.
+library(geosphere) #coğrafi hesaplamalar için kullanılıyor.
+#Enlem ve boylam arasındaki mesafenin hesaplanması için kullanılacak.
 
 ```
 
@@ -144,13 +160,38 @@ library(geosphere) #coğrafi hesaplamalar için kullanılıyor.Enlem ve boylam a
 
 bottom<-read_csv("C:/Users/yasem/OneDrive/Masaüstü/BaliklarNerede/bottom_line.csv", 
                  col_types = cols(Ping_date=col_datetime(format="%m/%d/%Y")))%>% 
-  #veri setinde Ping_date degişkeni ay,gün,yıl formatındaydı.Bu değişken tarih formatına dönüştürüldü.
+  #veri setinde Ping_date degişkeni ay,gün,yıl formatındaydı.
+  #Bu değişken tarih formatına dönüştürüldü.
   rename_all(tolower) 
 #rename_all tüm değişken isimlerine bir işlem uygulamak için kullanılır.
 #Tüm değişken isimleri küçük harfe dönüştürüldü.
 
 glimpse(bottom) #verinin yapısını inceleyeceğiz.
 ```
+
+**Veri Setimizdeki değişkenleri tanıyalım.** 
+
+**1)** <span style='color:maroon'>**ping_date :** *deniz altında gözlemlenen uğultuların tarihi.* 
+
+**2)** <span style='color:maroon'>**ping_time :** *deniz altında gözlemlenen uğultuların saati.* 
+
+**3)** <span style='color:maroon'>**ping_milliseconds :** *deniz altında gözlemlenen uğultuların kaç* milisaniye boyunca sürdüğü. 
+
+**4)** <span style='color:maroon'>**latitude:** *enlem.* 
+
+**5)** <span style='color:maroon'>**longitude:** *boylam.*
+
+**6)** <span style='color:maroon'>**position_status:** *pozisyon durumu.*
+
+**7)** <span style='color:maroon'>**depth:** *derinlik.*
+
+**8)** <span style='color:maroon'>**line_status:** *hat durumu.* 
+
+**9)** <span style='color:maroon'>**ping_status:** *uğultu durumu.* 
+
+**10)** <span style='color:maroon'>**altitude:** *rakım.*
+
+
 
 # 2.AŞAMA
 
@@ -171,29 +212,6 @@ Bir uçurumun su altı versiyonu olarak tanımlanabilir.
 Çoğu deniz ekosisteminde, Shelf Break aynı zamanda birçok türe yiyecek ve yaşam alanı sağlayan oldukça dinamik ve verimli bir alandır. En küçük fitoplanktonlardan en büyük deniz canlılarına, köpekbalıklarına, deniz kuşlarına ve deniz kaplumbağalarına kadar hepsi bu alanı yaşam döngülerinin bir noktasında kullanırlar. Ve bu harika bölgeden bazı aktif akustik verilerle çalışacağız!
 
 Ama önce batimetri (derinlik) verilerini temizleyelim ve çizim için hazırlayalım.
-
-
-**Veri Setimizdeki değişkenleri tanıyalım.** 
-
-**1)** <span style='color:maroon'>ping_date : deniz altında gözlemlenen uğultuların tarihi. 
-
-**2)** <span style='color:maroon'>ping_time : deniz altında gözlemlenen uğultuların saati. 
-
-**3)** <span style='color:maroon'>ping_milliseconds : deniz altında gözlemlenen uğultuların kaç milisaniye boyunca sürdüğü. 
-
-**4)** <span style='color:maroon'>latitude : enlem. 
-
-**5)** <span style='color:maroon'>longitude : boylam.
-
-**6)** <span style='color:maroon'>position_status : pozisyon durumu.
-
-**7)** <span style='color:maroon'>depth : derinlik.
-
-**8)** <span style='color:maroon'>line_status : hat durumu. 
-
-**9)** <span style='color:maroon'>ping_status : uğultu durumu. 
-
-**10)** <span style='color:maroon'>altitude: rakım. 
 
 
 
@@ -245,9 +263,9 @@ glimpse(bottom_clean) #değişkenlerin yapısına bakalım
 
 Artık kötü veri noktalarını kaldırdığımıza ve geminin kat ettiği kümülatif mesafeyi hesapladığımıza göre, verileri planlayalım.
 
-Geminin rotasının yatay görünümü, geminin ray hattından sapıp sapmadığını veya verilerde herhangi bir kesinti olup olmadığını bize gösterecektir.
+Geminin rotasının yatay görünümü, geminin rota hattından sapıp sapmadığını veya verilerde herhangi bir kesinti olup olmadığını bize gösterecektir.
 
-rota çizgisi boyunca deniz tabanının derinliğinin bir grafiği bize Shelf Break'ın konumunu gösterecektir. İzleme hattı verilerinin uzamsal analizinde, genellikle sp ve sf paketlerinde çalışırdık, ancak bu kendi başına bir konudur. Şimdilik, rota çizgisi boyunca enlem, boylam, derinlik ve mesafe ile birkaç rota çizgisi grafiği oluşturacağız.
+Rota çizgisi boyunca deniz tabanının derinliğinin bir grafiği bize Shelf Break'ın konumunu gösterecektir. İzleme hattı verilerinin uzamsal analizinde, genellikle sp ve sf paketlerinde çalışırdık, ancak bu kendi başına bir konudur. Şimdilik, rota çizgisi boyunca enlem, boylam, derinlik ve mesafe ile birkaç rota çizgisi grafiği oluşturacağız.
 
 ### TALİMATLAR
 
@@ -328,9 +346,10 @@ Balık olması durumunda, yol hattının daha yüksek / daha düşük yoğunlukl
 
 acoustic<-read_csv("C:/Users/yasem/OneDrive/Masaüstü/BaliklarNerede/acoustic.csv",
                    col_types=cols(Date_M=col_datetime(format="%Y%m%d")))%>%  
-  #Date_M değişkeninin  Yıl,ay,gün formatında olduğu belirtildi ve  tarih formatına dönüştürüldü.
+  # Date_M değişkeninin  Yıl,ay,gün formatında olduğu belirtildi ve
+  # tarih formatına dönüştürüldü.
   filter(Lon_M !=999.0) 
-#Lon_M 999.0 a eşit olamayanlar filtrelendi.
+# Lon_M 999.0 a eşit olmayanlar filtrelendi.
 
 # Verinin yapısını inceleyelim
 glimpse(acoustic)
@@ -393,6 +412,31 @@ Sv_layer1 <- acoustic %>%
 glimpse(Sv_layer1)
 ```
 
+
+**Sv_layer1 Veri Setimizdeki değişkenleri tanıyalım.** 
+
+**1)** <span style='color:maroon'>**Spatial_interval :** *uzamsal aralık.* 
+
+**2)** <span style='color:maroon'>**Layer :** *katman.* 
+
+**3)** <span style='color:maroon'>**Sv_mean :** *balıkların yol çizgisi boyunca dağılımının bir göstergesi.* 
+
+**4)** <span style='color:maroon'>**Frequency:** *frekans.* 
+
+**5)** <span style='color:maroon'>**Date:** *tarih.*
+
+**6)** <span style='color:maroon'>**Time_S:** *başlangıç saati*
+
+**7)** <span style='color:maroon'>**Time_E:** *bitiş saati.*
+
+**8)** <span style='color:maroon'>**Lat_M:** *grid hücresinin başlangıç noktası.* 
+
+**9)** <span style='color:maroon'>**Lon_M:** *grid hücresinin uç noktası.* 
+
+**10)** <span style='color:maroon'>**Datetime_start:** *tarih ve başlangıç saatinin birleştirilişmiş hali*
+
+**10)** <span style='color:maroon'>**Datetime_end:** *tarih ve bitiş saatinin birleştirilişmiş hali*
+
 # 6. AŞAMA
 
 ## Biraz daha tartışma
@@ -431,7 +475,7 @@ Sv <- Sv_layer1 %>%
   #Distance_between için kümülatif toplamlar bulundu ve Distance_along oluşturuldu.
     na_if(-999) %>%  #-999'un NA oldugu belirtildi.
     mutate(Time_interval = interval(Datetime_start, Datetime_end)) 
-#interval() başlangıç ve bitiş tarihlerini yan yana getirerek birleştirdi 
+#interval() komutu başlangıç ve bitiş tarihlerini yan yana getirerek birleştirdi 
 #Time_interval oluşturuldu.
 
 # Veriyi inceleyelim
@@ -462,8 +506,9 @@ Akustik dosyada derinlik bilgisi yok. Bu tam olarak doğru değil. Bu 78 değiş
 # İşlevi adlandırın.
 get_Interval_by_time <- function(bottom_data){
   res <- Sv$Spatial_interval[bottom_data%within%Sv$Time_interval] 
-  #veriye Sv verisindeki Time_interval aralıklarına göre,
-  #Sv deki Spatial_interval değerlerini atayacak bir fonksiyon oluşturuldu.
+  # mevcut veriden, Sv verisindeki Time_interval zaman aralığında olan yerler 
+  # alınarak buralara göre,Sv deki Spatial_interval değerlerini atayacak 
+  # bir fonksiyon oluşturuldu.
   if(length(res)==0) return(NA)         # NA lar
   return(res)
 }
@@ -472,8 +517,11 @@ get_Interval_by_time <- function(bottom_data){
 
 bottom_spatial_interval_segments <- bottom_clean  %>% 
     mutate(trackline_interval = purrr::map_dbl(date_time, get_Interval_by_time)) 
-#map_dbl çift vektörleri döndürür.
-# date_time değişkenine fonksiyon uygulandı ve trackline_interval oluşturuldu.
+# map_dbl çift vektörleri döndürür.
+# bottom_clean daki date_time değişkenine fonksiyon uygulandı 
+# ve sv deki Time_interval aralığında olan tarihler alınarak 
+# buralara denk gelen spatial interval değerleri atandı.
+# Bu şekilde bottom_clean verisinde trackline_interval değişkeni oluşturuldu.
 
 # İlk 15 satırı inceleyin.
 knitr::kable(head(bottom_spatial_interval_segments, 15))
@@ -495,7 +543,7 @@ Yalnızca ilk derinlik katmanına (0 ila 250 m) baktığımızı unutmayın. Tü
 
 <span style='color:maroon;font-weight:600'>*1)Her bir rota hattı aralığı için ortalama derinliği özetleyin.*
 
-<span style='color:maroon;font-weight:600'>*2)Grup bottom_spatial_interval_segments tarafından trackline_interval ve her aralık için ortalama derinliği özetler.*
+<span style='color:maroon;font-weight:600'>*2)Grup bottom_spatial_interval_segments tarafından trackline_interval ve her aralık için ortalama derinliği özetleyin.*
 
 <span style='color:maroon;font-weight:600'>*3)bottom_intervals'ı Akustik verilere katın ve 250 metreden büyük her derinlik değerini 250 ile değiştiren  depth_plot değişkenini oluşturun .*
 
@@ -506,20 +554,20 @@ Yalnızca ilk derinlik katmanına (0 ila 250 m) baktığımızı unutmayın. Tü
 
 bottom_intervals<-bottom_spatial_interval_segments %>%
   group_by(trackline_interval) %>% 
-  #veriyi trackline_interval ile grupluyoruz.
+  # veriyi trackline_interval ile grupluyoruz.
   summarize(depth_mean=mean(depth)) %>% 
   #derinliğin ortalamasını bulup depth_mean a eşitliyoruz. 
   ungroup()
 
-#Bottom_intervals verilerini akustik veriyle birleştirin
+# Bottom_intervals verilerini akustik veriyle birleştirin
 
 Sv_and_depth<-Sv %>%
   left_join(bottom_intervals,by=c("Spatial_interval"="trackline_interval")) %>% 
-  #bottom_intervals verisindeki tracline_interval değişkeninin ismi,
-  #Sv verisi ile ortak olması için "Spatial_inyterval ismi ile değiştirildi.
-  #iki veri birleştirildi.
+  # bottom_intervals verisindeki tracline_interval değişkeninin 
+  # Spatial_interval değişkeni olduğu belirtildi ve 
+  # iki veri bu ortak Spatial_interval değişkeni kullanılarak birleştirildi.
   mutate(depth_plot=ifelse(depth_mean >=250,250,depth_mean))
-#250 den büyük her ortalama derinlik değeri 250 oldu.
+# 250 den büyük her ortalama derinlik değeri 250 oldu.
 #bu şekilde depth_plot değişkeni oluşturuldu.
 
 # Veriyi inceleyelim

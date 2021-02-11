@@ -668,7 +668,7 @@ knitr::include_graphics('C:/Users/yasem/OneDrive/Masaüstü/balık.jpg')
 ```
 
 
-# GİTHUP LİNKİ
+# GitHub LİNKİ
 
 https://github.com/yaseminhzrc/BaliklarNerede
 

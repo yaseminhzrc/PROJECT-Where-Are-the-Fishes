@@ -3,10 +3,10 @@ title: "BALIKLAR NEREDE?"
 author: "Yasemin Hızarcı,Sevim Özinan,Mehtap Fil"
 output:
   rmdformats::material:
-    self_contained: true
-    code_folding: show
-    thumbnails: true
-    gallery: true
+  self_contained: false
+  code_folding: show
+  thumbnails: true
+  gallery: true
 ---
 
 <style type="text/css">
@@ -44,10 +44,7 @@ font-weight:600;
 </style>
 
 
-```{r include=FALSE}
-library(knitr)
-library(rmdformats)
-```
+
  
 ```{css,echo=FALSE}
 .watch-out {
@@ -69,18 +66,20 @@ knitr::opts_chunk$set(class.source="watch-out",class.output="watch-out1")
 
 
 
-
-
+```{r include=FALSE}
+library(knitr)
+library(rmdformats)
+```
 
 ```{r echo=FALSE, fig.align='center', out.width='100%'}
 
-library(knitr)
-library(rmdformats)
-
-knitr::include_graphics('C:/Users/yasem/OneDrive/Masaüstü/foto.jpeg')
+knitr::include_graphics('C:/Users/yasem/OneDrive/Masaüstü/analiz.jpg')
 
 
 ```
+
+
+
 
 
 

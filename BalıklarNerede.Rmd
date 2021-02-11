@@ -480,6 +480,7 @@ Sv <- Sv_layer1 %>%
 # Veriyi inceleyelim
 glimpse(Sv)
 ```
+
 # 7.AŞAMA
 
 ## Uzamsal olamıyor musunuz zamansal gidin
@@ -526,7 +527,6 @@ bottom_spatial_interval_segments <- bottom_clean  %>%
 knitr::kable(head(bottom_spatial_interval_segments, 15))
 
 ```
-
 
 # 8.AŞAMA
 
@@ -596,7 +596,6 @@ glimpse(Sv_and_depth)
 
 ```{r echo=FALSE, fig.align='center', out.width='100%'}
 knitr::include_graphics('C:/Users/yasem/OneDrive/Masaüstü/batimetri.jpg')
-
 ```
 
 ### TALİMATLAR
@@ -630,11 +629,11 @@ bathymetry<-ggplot(Sv_and_depth,aes(Distance_along,depth_plot))+
   labs(x="Distance along trackline (m)",y="Depth(m)")  
 #x ve y ekseni isimlendirildi.
 
-# İki paneli tek bir şekilde görüntüleyin
+# İki paneli tek bir şekilde görüntüleyelim
 
 Sv_mean_plot/bathymetry
 ```
-
+Oluşturduğumuz iki ayrı grafiğin x eksenleri aynı yani geminin aldığı yolu temsil ederken y eksenleri sırasıyla geri saçılım ve derinliği ifade etmektedir.İlk grafikte negatiflik yani geri saçılım arttıkça balık yoğunluğu artar. İkinci grafikte ise max derinlikte balıkların yoğunluğunun arttığını anlayabiliriz.
 
 (Yararlandığımız kaynak: https://ggplot2.tidyverse.org/reference/scale_continuous.html , https://www.data-imaginist.com/2019/patch-it-up-and-send-it-out/ , https://stackoverflow.com/questions/17334759/subscript-letters-in-ggplot-axis-label)
 
@@ -655,24 +654,17 @@ Tüm akustik geri saçılımın sadece yüzme kesesi olan balıklardan geldiğin
 **Seçenekler: Shelf, Shelf Break, Offshore**
 
 
-shelf break için ortalama derinlik=133 metre.
-
-
-
 ```{r}
 # Bu yol boyunca balıkların nerede olduğunu düşünüyorsun?
 
-# Seçenekler:Shelf,Shelf Break ,Offshore
-
 (where_are_the_fishes<-"Shelf")
 ```
-
+Grafik sonuçlarından balıkların yoğunluk gösterdiği bölge tespit edilmiştir. Bu bölge birçok türe yiyecek ve yaşam alanı sağlayan oldukça dinamik ve verimli bir alan olan Shelf bölgesidir.
 
 
 
 ```{r echo=FALSE, fig.align='center', out.width='100%'}
 knitr::include_graphics('C:/Users/yasem/OneDrive/Masaüstü/balık.jpg')
-
 ```
 
 

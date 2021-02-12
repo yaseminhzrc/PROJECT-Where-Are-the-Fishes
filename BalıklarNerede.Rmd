@@ -73,7 +73,7 @@ library(rmdformats)
 
 ```{r echo=FALSE, fig.align='center', out.width='100%'}
 
-knitr::include_graphics('C:/Users/yasem/OneDrive/Masaüstü/analiz.jpg')
+knitr::include_graphics('C:/Users/yasem/OneDrive/Masaüstü/foto.jpeg')
 
 
 ```
@@ -581,7 +581,7 @@ Sv_and_depth<-Sv %>%
 glimpse(Sv_and_depth)
 ```
 
-İki veri birleştirildi ve 16 değişkenden oluşan esas verimize ulaştık.Bu 16 değişkenin ilk 14 ü Sv verisinden,son ikisi ise bottom_intervals verisinden elde edilmiştir.
+
 
 # 9.AŞAMA
 

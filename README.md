@@ -1,4 +1,4 @@
-# WHERE ARE THE FISHES ?
+﻿# WHERE ARE THE FISHES ?
 
 ## **PROJECT**
 
@@ -20,6 +20,7 @@
 ### **Project Description**
 
 *In this project, you will explore two georeferenced data files collected from an echosounder to determine where fish were along a track line in the Mid-Atlantic Bight (US). Marine ecologists use sound reflections to “see” different types of organisms in the water column and to determine the depth of the seafloor. You are going to load, clean, and plot bathymetric data (depth of the seafloor) to examine the shelf break, and the mean volumetric backscatter (Sv, dB re 1 m) along a transect in the Mid-Atlantic Bight area of the North Atlantic Ocean to find fishes. To complete this project you should be comfortable working in the Tidyverse, plus working with dates and times and writing functions.*
+
 
 
 ![image](https://user-images.githubusercontent.com/59409886/127558056-4868d0c1-1925-4778-8db3-64a865c47dac.png)

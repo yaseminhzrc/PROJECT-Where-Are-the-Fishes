@@ -9,7 +9,6 @@
 **Prepared by: Yasemin Hızarcı, Sevim Özinan, Mehtap Fil**
 
 
-
 ![image](https://user-images.githubusercontent.com/59409886/127557164-731f85ca-fb07-46d5-bd6d-b21ff3e2ede5.png)
 
 
